@@ -45,9 +45,15 @@ def main():
     group.add_argument("-e", "--exe", help="Search Windows exe on LOLBAS")
     group.add_argument("-w", "--link", help="gtfobins link to the page")
     group.add_argument("-ls", "--list", help="list all the available binaries", choices=["bins", "exe"])
+    group.add_argument("-nb", "--nobanner", help="remove banner on start")
 
     args = parser.parse_args()
-
+    if args.nobanner:
+        #do nothing
+    else:
+        print(colors(figlet_format('# gtfo', font='big'), 92))
+        print("\n")
+    
     if args.exe:
         lolbas(args.exe)
 
@@ -65,6 +71,4 @@ def main():
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, signal_handler)
-    print(colors(figlet_format('# gtfo', font='big'), 92))
-    print("\n")
     main()
