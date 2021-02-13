@@ -45,7 +45,7 @@ def main():
     group.add_argument("-e", "--exe", help="Search Windows exe on LOLBAS")
     group.add_argument("-w", "--link", help="gtfobins link to the page")
     group.add_argument("-ls", "--list", help="list all the available binaries", choices=["bins", "exe"])
-    group.add_argument("-nb", "--nobanner", help="remove banner on start")
+    group.add_argument("-nb", "--nobanner", help="remove banner on start", action='store_true')
 
     args = parser.parse_args()
     if args.nobanner:
