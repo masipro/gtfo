@@ -80,9 +80,10 @@ def gtfobins(bin_name: str):
     bins = get_bins()
 
     if bin_name in bins:
+        print(colors("[+] Binary found: " + bin_name, 92))
         r = requests.get(RAW_URL.format(bin_name)).text
         data = list(yaml.load_all(r, Loader=yaml.SafeLoader))[0]
 
         parse(data)
     else:
-        print(colors("[!] Binary not found on GTFObins: ", 91))
+        print(colors("[!] Binary not found on GTFObins: " + bin_name, 91))
