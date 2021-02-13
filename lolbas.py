@@ -77,11 +77,12 @@ def lolbas(name: str):
 
     exes = get_exe()
     if name in exes.keys():
+        print(colors("[!] Binary found" + name, 92))
         url = RAW_URL + exes[name] + '.md'
         r = requests.get(url).text
         data = list(yaml.load_all(r, Loader=yaml.SafeLoader))[0]
         parse(data)
     else:
-        print(colors("[!] Binary not found on LOLBAS", 91))
+        print(colors("[!] Binary not found on LOLBAS" + name, 91))
         #TODO: Match user input and make suggestion for search
         print(colors("[!] Make sure to provide name with proper extension", 91))
